@@ -11,6 +11,7 @@ def predict_user_img(img_path, model):
     
     # takes user image as input, preprocesses it,
     # and returns the prediction
+    # example use: predict_user_img('digit3.png', 'mnist_model')
     
     img = cv2.imread(img_path, 0)
     img = cv2.resize(img, (28, 28))
@@ -29,4 +30,3 @@ def predict_user_img(img_path, model):
         return prediction, plt.imshow(img)
     
 
-#predict_user_img('digit3.png', 'mnist_model')

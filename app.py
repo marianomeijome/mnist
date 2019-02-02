@@ -35,33 +35,10 @@ def index():
 def api_root():
     return render_template('mydigits.html')
 
-@app.route('/predict', methods = ['POST'])
-def api_predict():
-    # Get the uploaded image
-    img = request.files['file']
-    
-    # Store in memory
-    in_memory_file = io.BytesIO()
-    img.save(in_memory_file)
-    
-    # Convert to array representing black-and-white image
-    data = np.fromstring(in_memory_file.getvalue(), dtype=np.uint8)
-    img = cv2.imdecode(data, 0)/255
-    
-    # Reshape for the model
-    data = img.reshape(-1, 28,28,1)
-    
-    # The model is trained on white-on-black images. If a white-on-black image
-    # is used, it will likely give incorrect results. Here is a basic fix to
-    # try to detect black-on-white images and convert them. Probably not fool-proof.
-    if ( data.mean() > 0.5 ):
-        data = ValueInvert(data)
-        
-    # Generate prediction
-    pred = mnist_model.predict(data)
-    
-    # Provide response
-    return "The image you uploaded shows a " + str(pred) + ".\n"
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
+
 
 @app.route('/post-data-url', methods = ['POST'])
 def api_predict_from_dataurl():
@@ -119,4 +96,4 @@ if __name__ == '__main__':
 #    app.secret_key = 'super secret key'
     app.config['SESSION_TYPE'] = 'filesystem'
 
-    app.run(debug=True, host='0.0.0.0')
+    app.run(debug=False, host='0.0.0.0')

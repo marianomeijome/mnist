@@ -1,5 +1,6 @@
 body{
     font-family: sans-serif;
+    overflow-x: hidden;
 }
 
 section{
@@ -59,7 +60,7 @@ img{
     width:50%;
     height:4px;
     background-color:#999;
-    margin: 10px 0px;
+    margin: 25px auto;
 }
 
 .nav-link{
@@ -75,8 +76,17 @@ footer{
     font-size:28px; 
 }
 .bg1{
-/*    background-image:url("mdb_bg2.jpg");*/
+    background-image:url("mdb_bg2.jpg");
     background-size: cover;
+}
+.bg2{
+    background-image:url("mnist_bg.jpg")!important;
+    background-size: 33%;
+    background-repeat: repeat;
+}
+.bg3{
+    background-image:url("bg3.png")!important;
+    background-repeat: repeat;
 }
 #banner{
     min-height:50%;
@@ -106,6 +116,12 @@ footer{
 .description{
     width: 60%;
     border-left: 4px solid cornsilk;
+    padding:15px;
+    color:cornsilk;
+}
+.bio{
+    width: 60%;
+    border-bottom: 4px solid cornsilk;
     padding:15px;
     color:cornsilk;
 }
